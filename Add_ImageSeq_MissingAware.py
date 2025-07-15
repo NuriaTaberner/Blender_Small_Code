@@ -3,8 +3,8 @@ import os
 import re
 
 # === CONFIGURATION ===
-directory = r"C:/Users/user/Documents/VIZCIE/production/Projects/Fujiwara/Renders/Animatics"
-keyword = "July_9th"
+directory = r"File_path" #<------------ Add here your image file path -------
+keyword = "Select_Keyword" #<---------- Load only images that have this keyword 
 frame_pattern = r"(\d+)(?!.*\d)"  # Grab the last numeric group
 channel = 2
 
