@@ -1,0 +1,29 @@
+import bpy
+
+target_substring = "Keyword"  # Replace with your desired keyword
+
+def include_and_select_matching(layer_collection):
+    matched = False
+    # Check if collection contains matching objects
+    for obj in layer_collection.collection.objects:
+        if target_substring in obj.name:
+            if layer_collection.exclude:
+                layer_collection.exclude = False
+                bpy.context.view_layer.update()
+            obj.select_set(True)
+            matched = True
+            print(f"Selected: {obj.name}")
+    # Recurse into child collections
+    for child in layer_collection.children:
+        if include_and_select_matching(child):
+            matched = True
+    return matched
+
+# Deselect everything first
+bpy.ops.object.select_all(action='DESELECT')
+
+# Run the search and selection
+found = include_and_select_matching(bpy.context.view_layer.layer_collection)
+
+if not found:
+    print(f"No objects found containing '{target_substring}'")
