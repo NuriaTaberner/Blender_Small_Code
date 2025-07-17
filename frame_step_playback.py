@@ -5,6 +5,7 @@ bl_info = {
     "version": (1, 0),
     "blender": (3, 0, 0),
     "category": "Animation"
+    "doc_url": "https://github.com/NuriaTaberner/Blender_Small_Code"
 }
 
 import bpy
